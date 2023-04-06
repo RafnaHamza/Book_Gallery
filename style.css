@@ -1,0 +1,172 @@
+
+.bookstore{
+    background-color: rgb(106, 161, 154);
+    margin-top: 0px;
+}
+.top{
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    margin: 0px;
+    background-color: rgb(106, 161, 154);
+    /* padding: 0 10px; */
+    /* position: fixed; */
+    /* z-index: 1000; */
+    width: 100%;
+}
+
+#bicon{
+    width: 60px;
+    height: 60px;
+}
+
+#head{
+    margin: 5px;
+    font-family: 'Rubik Pixels', cursive;
+    color: rgb(243, 235, 235);
+    font-size: 40PX;
+}
+
+.navbar{
+    position: sticky;
+    /* top: 50px; */
+    top: 0px;
+}
+.navdiv{
+    display: flex;
+    /* position: sticky; */
+}
+
+.navdiv2{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navdiv2 a{
+    padding: 10px;
+    font-family: 'Alkatra', cursive;
+}
+
+.books{
+   background-color: rgba(255, 228, 196, 0.295);
+   width: 92%;
+   padding: 10px;
+   margin: 42px;
+}
+
+/* .book{
+    position: relative;
+    top: 30px;
+} */
+
+#h2{
+    align-items: center;
+    text-align: center;
+    color: rgb(243, 235, 235);
+    position: relative;
+    top: 70px;
+    font-family: 'Delicious Handrawn';
+}
+
+.book1{
+    display: flex;
+}
+
+.book2{
+    width: 150px;
+    margin: 5px;
+    margin-top: 50px;
+    height: 320px;
+}
+
+.book2 img{
+    width: 160px;
+    height: 200px;
+    margin-top: 40px;
+    padding: 10px;
+}
+
+.book2 h6{
+    text-align: center;
+}
+
+.price{
+    display: flex;
+    margin-left: 10px;
+}
+
+.price p{
+   margin-top: 15px;
+   color: brown;
+}
+
+.btn{
+    border: 2px solid;
+    width: auto;
+    height: 30px;
+    margin-top: 12px;
+    text-align: center;
+    align-items: center;
+    background-color: cadetblue;
+    margin-left: 5px;
+}
+
+.btn:hover{
+    background-color: darkcyan;
+    color: brown;
+}
+
+#h1{
+    align-items: center;
+    text-align: center;
+    color: rgb(243, 235, 235);
+    margin-top: 10px;
+    font-family: 'Abril Fatface', cursive;
+}
+
+.footer{
+    width: 92%;
+    background-color: rgba(114, 130, 148, 0.295);
+    padding: 10px;
+    margin: 42px;
+}
+
+.cont{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.con{
+    display: flex;
+    
+}
+
+.con i{
+    /* margin-left: 60px; */
+    margin-top: 7px;
+}
+
+.con p{
+    margin-left: 20px;
+    text-decoration-style: solid;
+}
+.con a{
+    color: black;
+    font-family: 'Delicious Handrawn', cursive;
+    /* font-size: 20PX; */
+}
+
+#credit{
+    text-align: center;
+    text-decoration-style: solid;
+    font-size: 10px ;
+    margin-top: 20px;
+}
+/* .btn a{
+    color: black;
+}
+
+.btn a:hover{
+    color: brown;
+} */

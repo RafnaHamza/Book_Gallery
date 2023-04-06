@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <!-- Nav bar -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <!-- fontawsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- style sheet -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- saveicon -->
+    <link rel="icon" href="data:image/png;base64,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">
+
+    <!-- font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bungee+Inline&family=Climate+Crisis&family=Golos+Text&family=Lily+Script+One&family=Permanent+Marker&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Pixels&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bungee+Inline&family=Climate+Crisis&family=Golos+Text&family=Lily+Script+One&family=Permanent+Marker&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Pixels&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Black+Ops+One&family=Bungee+Inline&family=Climate+Crisis&family=Delicious+Handrawn&family=Golos+Text&family=Lily+Script+One&family=Permanent+Marker&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Pixels&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    
+<div class="bookstore">
+
+    <div class="top">
+        <div class="icon"><img id="bicon" src="data:image/png;base64,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" alt=""></div>
+        <div><h1 id="head">ONLINE BOOK STORE</h1></div>
+        <i class="fa-sharp fa-solid fa-book-open-cover"></i>
+    </div>
+
+    <nav class="navbar bg-warning navbar-expand-lg navbar-light">
+        <div class="navdiv">
+            <a class="navbar-brand" href="#">Home</a>
+             <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+            </button> -->
+          <div class="navdiv2 navba-collapse">
+            
+                    <a class="nav-link" href="#allbooks">All Books</a>
+                  
+                    <a class="nav-link" href="#storybooks">Story Books</a>
+
+                    <a class="nav-link" href="#poems">Poems</a>
+               
+                    <a class="nav-link" href="#fiction">Fiction</a>
+                
+                    <a class="nav-link" href="#bestsellers">Best sellers</a>
+               
+                    <a class="nav-link" href="#contact">Contact Us</a>
+        
+        </div>
+        </div>
+    </nav>     
+    
+    <div class="books">
+
+        <section id="allbooks">
+            <div class="book">
+                <h2 id="h2">All Books</h2>
+                <div class="book1">
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQxdbNU6mcfvXQbfaDXkYQiHcj99BLdH4UGRaeD3MVvxGmy2FY7XVm2T4DN9c-hSITogu1Fu8az35kmposXHH5M-xB3s1fG0byRo7MSfB0w&usqp=CAE" alt="">
+                        <h6>Cinderella</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 450
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQxqFi7b2CZIMURjUnX7QXty89Kq7tFO6Elv8O4s4mq8zBxgStqwJt6iB-oUO7d6ZYDSg-4FZyahIxMhS1ew2VEvwPpArQKGvEpkUBG65ui&usqp=CAc" alt="">
+                        <h6>Wings of Fire</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 200
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQCgJ9yXv292lCLINRQY_qAWWCrRQalEXS3oW8iiSSiNnKHYNEueqEZl2QleInESjmARLCTxljVkuSCCmpdpM-JmwUFvRHL_Zh8DqmZ5RI&usqp=CAE" alt="">
+                        <h6>The Secret Garden</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 180
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQJh4sk90uEsCPClgl3oJDrnP2XjK379KQTs0oXhOtmTEYwFr2MhMxlxnUB-x1oqy0wNrewnpzaqiEqcJZiMcvVUZqN9Tz0ypFbAxHO9fR-qjKopLjnCo7a&usqp=CAE" alt="">
+                        <h6>Three Rays</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 350
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>  
+
+                        <div class="book2">
+                             <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRZ76N_2bisEXqF8HuHEdgKBJekJKHJOKOpFXVFJZhKXoAayTCUia_TKWEDSn5hmItZkNn-InFctR3ex7D1sMGfvwpMjUQTalhYR01ZxQE&usqp=CAE" alt=""> 
+                             <h6>Macbeth</h6>
+                            <div class="price">
+                                <p>
+                                ₹ 300
+                                </p>
+                                 <button class="btn">Buy Now</button>
+                         </div>
+                        </div>
+
+                        <div class="book2">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ5S9AcVJXlbrEuRp50bmL0nw2Ni8Wtyk1TXCO33dv_wS-AzfffGDUq2-LVdqf4ZFiG5VkMpHSfPkCZESnWL42J48KgPgMDtcs5Pk5MHTpz&usqp=CAE" alt="">
+                        <h6>For Your Smile</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 390
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+        </section>
+
+        <section id="storybooks">
+            <div class="book">
+                <h2 id="h2">Story Books</h2>
+                <div class="book1">
+
+                    <div class="book2">
+                        <img src="https://d34a0mln2492j4.cloudfront.net/unsigned/resize:fit:800:1060:0/gravity:sm/plain/https%3A%2F%2Fimage-hub.reproindialtd.com%2F9788184303117.jpg" alt="">
+                        <h6>Alice in Wonderland</h6>
+                        <div class="price">
+                            <p>
+                                ₹  220
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                        
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/51tO6+4vgFL._SX332_BO1,204,203,200_.jpg" alt="">
+                        <br> 
+                        <h6>Harry Potter</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 750
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51QcBGAa1hL.jpg" alt="">
+                        <h6>Sleeping Beauty</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 250
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://cdn.fcglcdn.com/brainbees/images/products/438x531/2476384a.webp" alt="">
+                        <h6>The Jungle Book</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 300
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQxdbNU6mcfvXQbfaDXkYQiHcj99BLdH4UGRaeD3MVvxGmy2FY7XVm2T4DN9c-hSITogu1Fu8az35kmposXHH5M-xB3s1fG0byRo7MSfB0w&usqp=CAE" alt="">
+                        <h6>Cinderella</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 450
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://cdn.fcglcdn.com/brainbees/images/products/438x531/8210961a.webp" alt="">
+                        <h6>Panchatantra Stories</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 150
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="poems">
+            <div class="book">
+                <h2 id="h2">Poems</h2>
+                <div class="book1">
+                    <div class="book2">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcShlBc0otVKIC6DnsyJ28Fm2OwGiWVJq6-yMmSQHIwgaEygRLbTMoRuXNeYxW2wxrXTwbeZYVx6BEYI1aiuKHn9FMkCN4qJvmdQZ6GXxwhJuUhEZsHdOtb5Og&usqp=CAE" alt="">
+                        <h6>In the world of love</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 150
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRWJPcmL2-8Y2LTMEob1aDcT1wrbltODjbPH0m0ZcOU1-QzXnqIv58v5vSDcK0lbBjQaDXC5lhWJ1S7PmsP7VyYa16xRequ7ksARyvUrng5&usqp=CAE" alt="">
+                        <h6>Mirari</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 200
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQM5sL9eulkkm8ZLL5Z8S4bR4VxxHkXWSB-It7w16n5dp1KjFww8xHh66M2hy3EHrZZeugLJd_gJWFo-AtZw4Xdki5ODKygwPglmxl__cTPfXdTnTMAUpasEQ&usqp=CAE" alt="">
+                        <h6>Moon Child</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 280
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQMjDvzN5GzkITO3c3ne-A7uvjxrzTf8b7GhwKvGKHOseuX4mUS2yMkK66Jq2x8UZUP81gi_jCSBd2FlW2eBibrPyaQjvjneUPlWZDDjGI&usqp=CAE" alt="">
+                        <h6>Madhushala</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 250
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ5S9AcVJXlbrEuRp50bmL0nw2Ni8Wtyk1TXCO33dv_wS-AzfffGDUq2-LVdqf4ZFiG5VkMpHSfPkCZESnWL42J48KgPgMDtcs5Pk5MHTpz&usqp=CAE" alt="">
+                        <h6>For Your Smile</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 390
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSmN48xxv-cAAzmyZo7Oh8bKpnY0Av7m7SR2dKj1yNux3kkt0FNdiw9FhIjr1TetP6bdHv0q8c7nP8TaYTdIEzcotEVY3vLBrdOLspW6W6Q6fuNW893srrz&usqp=CAE" alt="">
+                        <h6>Everything is Poetry</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 260
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fiction">
+            <div class="book">
+                <h2 id="h2">Fiction</h2>
+                <div class="book1">
+
+                    <div class="book2">
+                            <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/410llGwMZGL._SX328_BO1,204,203,200_.jpg" alt="">
+                            <h6>The Alchemist</h6>
+                            <div class="price">
+                                <p>
+                                ₹ 220
+                                </p>
+                                 <button class="btn">Buy Now</button>
+                         </div>
+                    </div>    
+                    
+                    <div class="book2">
+                        <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/51tybTY45fL._SX352_BO1,204,203,200_.jpg" alt="">
+                        <h6>Scilent Witness</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 180
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/41kRkqIt6aL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg" alt="">
+                        <h6>That Night</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 200
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTpqEnDhO5WQtJQjTNamx9gKJljYWD-P-cVRqEG_xb4KdwXNymJJuY-fCsaj7ZYTau7VQuBQM5g7mQDo4PIMFyl97gCUmj6ETauzRc3_cZ2PSfw8dRRtFbv&usqp=CAE" alt="">
+                        <h6>Twilight</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 400
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSB2xdQmlE7noiCryJ-XwP3ilUct-BrE0a-SW_fV2C4bioYpghl" alt=""> 
+                        <h6>The Nightingale</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 250
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRG23UozETp4YrV1v8QKPdIPl_Cjm3oo_Yn44b0YTySyRLgLlnejHeSlWmAbInxVhDLoZBVTAP-hwvTvpNBH7pHypqGz6QIhb5yiShUX7NizsXaHXEKGYnk&usqp=CAE" alt="">
+                        <h6>Pride and Prejudice</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 380
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="bestsellers">
+            <div class="best">
+                <h2 id="h2">Best Sellers</h2>
+                <div class="book1">
+                    <div class="book2">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTpqEnDhO5WQtJQjTNamx9gKJljYWD-P-cVRqEG_xb4KdwXNymJJuY-fCsaj7ZYTau7VQuBQM5g7mQDo4PIMFyl97gCUmj6ETauzRc3_cZ2PSfw8dRRtFbv&usqp=CAE" alt="">
+                        <h6>Twilight</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 400
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQxqFi7b2CZIMURjUnX7QXty89Kq7tFO6Elv8O4s4mq8zBxgStqwJt6iB-oUO7d6ZYDSg-4FZyahIxMhS1ew2VEvwPpArQKGvEpkUBG65ui&usqp=CAc" alt="">
+                        <h6>Wings of Fire</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 200
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/51tO6+4vgFL._SX332_BO1,204,203,200_.jpg" alt="">
+                        <br> 
+                        <h6>Harry Potter</h6>
+                        <div class="price">
+                            <p>
+                                ₹ 750
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://d34a0mln2492j4.cloudfront.net/unsigned/resize:fit:800:1060:0/gravity:sm/plain/https%3A%2F%2Fimage-hub.reproindialtd.com%2F9788184303117.jpg" alt="">
+                        <h6>Alice in Wonderland</h6>
+                        <div class="price">
+                            <p>
+                                ₹  220
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>   
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcT3NvEYlYOnTz5KgRoohHVy90pjnh-dZqskT0mNkPFKMSBFEjwk6BsITlGLbjjRsGVKmNlE9CrN2hFS_ajV4P3e1quQNs_P7jyFdNQclTCUPc7Hp4Y52V2uSw&usqp=CAE" alt="">
+                        <h6>Two States</h6>                       
+                        <div class="price">
+                            <p>
+                                ₹ 250
+                            </p>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="book2">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQfomlejjfm11cMKJJvMDmldcCehXGVw0zgJEkc-UTIgMM7AztvX0BGfpgM0IyGUbErr4qcMu5yrMTt7LwyP4dF5Cmmc_Xy-Nk03qV7I8dp&usqp=CAE" alt="">
+                        <h6>The Alchemist</h6>
+                        <div class="price">
+                            <p>
+                            ₹ 280
+                            </p>
+                             <button class="btn">Buy Now</button>
+                     </div>
+                </div> 
+                </div>
+            </div>
+        </section>
+    </div>
+    <section id="contact">
+        <div class="footer">
+            <h2 id="h1">contact us</h2>
+            <div class="cont">
+
+                <div></div>
+                <div></div>
+                <div class="con">
+                    <i class="fa-sharp fa-solid fa-phone"></i>
+                    <p><a href="#">0667-2002266</a></p>
+                </div>
+                <div></div>
+                <div></div>
+
+                <div class="con">
+                    <i class="fa-sharp fa-solid fa-envelope"></i>
+                    <P type="mail">
+                       <a href="#">bookstorebnc@gmail.com</a>
+                    </P>
+                </div>
+
+                <div class="con">
+                    
+                </div>
+            </div>
+
+            <p id="credit">© 2005-2023 bookstore.com | Privacy Policy | Terms of use</p>
+        </div>
+    </section>
+</div>
+</body>
+</html>
+
+                    
